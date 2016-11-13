@@ -33,5 +33,22 @@ hist(CHF$Sex)
 hist(CHF$Age)
 #barplot of sex by admission source, need to clean up
 barplot(CHF$admsrc,CHF$Sex)
-
+#Find mortality rates when 
+#DRG=292 and DRG=293
+#discharge destination=20
+mortrate<-CHF[c(10,11)]
+#Total values for drg 292 = 144
+mortratea<-mortrate[!(mortrate$drgcode!=292),]
+str(mortratea)
+#Total values for drg 293=81
+mortrateb<-mortrate[!(mortrate$drgcode!=293),]
+str(mortrateb)
+mortrate2<-mortrate[!(mortrate$dischdest!=20),]
+mortrate3<-mortrate2[!(mortrate2$drgcode<=291),]
+#The data shows 3 expirations with a DRG code of 292
+#The data shows 2 expirations with a DRG code of 293
+#The entire dataset has 390 visits
+mortrate292<-3/144
+mortrate293<-2/81
+#Plot the rate with the total observations by drg
 
