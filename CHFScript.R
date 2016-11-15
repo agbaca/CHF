@@ -51,4 +51,16 @@ mortrate3<-mortrate2[!(mortrate2$drgcode<=291),]
 mortrate292<-3/144
 mortrate293<-2/81
 #Plot the rate with the total observations by drg
+#The following is the code to create a subsetted dataset with Patient# LOS and DRG Code
+#Then a 1 sample ttest is run to see if LOS significantly different than 6 for drg 291
+los291<-CHF[!(CHF$drgcode!=291),]
+los291
+str(los291)
+los291b<-CHF[c(1,2,11)]
+str(los291b)
+los291b<-los291[c(1,2,11)]
+str(los291b)
+mean(los291b$LOS)
+t.test(los291b$LOS,mu=6,conf.level=0.95)
+
 
